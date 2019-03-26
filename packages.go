@@ -1,12 +1,16 @@
 package bom
 
-type Packages struct {
+type Materials struct {
+	Packages []Package
+}
+
+type Package struct {
 	Name    string
 	Version string
 	Release string
 	Arch    string
 	Format  PackageFormat
-	Source  SourceInfo
+	Source  PackageSource
 }
 
 type PackageFormat string
@@ -16,7 +20,7 @@ const (
 	PackageFormatDEB PackageFormat = "deb"
 )
 
-type SourceInfo struct {
+type PackageSource struct {
 	Format PackageFormat
 	Name   string
 	URL    string
