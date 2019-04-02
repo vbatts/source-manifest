@@ -19,6 +19,7 @@ package set.
 
 ## Additional Metadata
 
+- The distribution version and its channel information
 - The build instructions used to arrive at the final root filesystem
 - Information on build context or transient files copied into or fetched during the build
 
@@ -42,7 +43,10 @@ The bill-of-materials document will look generally like:
                                 "digest": "sha256:aaabbbcccddeeefff111222333...",
                                 "url": "https://my.content.store.com/..."
                         }
-                }
+                },
+		{
+			//...
+		}
         ]
 }
 ```
