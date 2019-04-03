@@ -1,22 +1,29 @@
-package bom
+package types
 
 // Materials is the collection of package information for a specific instance
 // of collection.
 type Materials struct {
+	AnnotationBase
+	StructTypeBase
+
 	BOMVersion string `json:"bomversion"`
 	Packages   []Package
 }
 
+// StructTypeMATERIALS is for the Materials struct
+const StructTypeMATERIALS StructType = "materials"
+
 // Package is base metric of system state information to collect.
 type Package struct {
-	Name        string            `json:"name"`
-	Version     string            `json:"version"`
-	Release     string            `json:"release"`
-	Arch        string            `json:"arch"`
-	URL         string            `json:"url,omitempty"`
-	Format      PackageFormat     `json:"format"`
-	Source      PackageSource     `json:"source"`
-	Annotations map[string]string `json:"annotations"`
+	AnnotationBase
+
+	Name    string        `json:"name"`
+	Version string        `json:"version"`
+	Release string        `json:"release"`
+	Arch    string        `json:"arch"`
+	URL     string        `json:"url,omitempty"`
+	Format  PackageFormat `json:"format"`
+	Source  PackageSource `json:"source"`
 }
 
 // PackageFormat is the format or type of package. This is typed for seeing
@@ -35,10 +42,11 @@ const (
 // PackageSource is the artifact or origin of source code that the Package is
 // directly derived from (revision/commit or checksum of the source package).
 type PackageSource struct {
-	Format      PackageFormat     `json:"format"`
-	Name        string            `json:"name"`
-	URL         string            `json:"url,omitempty"`
-	Annotations map[string]string `json:"annotations"`
+	AnnotationBase
+
+	Format PackageFormat `json:"format"`
+	Name   string        `json:"name"`
+	URL    string        `json:"url,omitempty"`
 	// like https://github.com/opencontainers/image-spec/blob/master/descriptor.md#digests
 	Digest string `json:"digest"`
 	// maybe also Version? Commit?
