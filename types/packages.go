@@ -19,11 +19,11 @@ type Package struct {
 	PackageURLBase
 	PackageFormatBase
 
-	Name    string        `json:"name"`
-	Version string        `json:"version"`
-	Release string        `json:"release"`
-	Arch    string        `json:"arch"`
-	Source  PackageSource `json:"source"`
+	Name string `json:"name"`
+	// Version is the best effort to match the package's version. On debian systems, the package version may look like "6.0+20161126-1+deb9u2", where as on an rpm system, there are three fields (epoch, version and release) that would be best concatenated together in that order "1:0.1.35-1.git404c5bd.fc29" (trouble is that epoch is not always a set value).
+	Version string          `json:"version"`
+	Arch    string          `json:"arch"`
+	Source  []PackageSource `json:"source"`
 }
 
 // PackageFormat is the format or type of package. This is typed for seeing

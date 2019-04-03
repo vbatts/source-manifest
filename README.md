@@ -22,30 +22,62 @@ The utilities can be tailored per distro or package interface, writing the packa
 
 ## Data structure
 
+### Materials Data
+
 The bill-of-materials document will look generally like:
 
 ```json
 {
-        "struct_type": "materials",
-        "packages": [
-                {
-                        "name": "acl",
-                        "format": "rpm",
-                        "version": "2.2.51",
-                        "release": "12.el7",
-                        "arch": "x86_64",
-                        "source": {
-                                "format": "rpm",
-                                "name": "acl-2.2.51-12.el7.src.rpm",
-                                "digest": "sha256:aaabbbcccddeeefff111222333...",
-                                "url": "https://my.content.store.com/..."
-                        }
-                },
-		{
-			//...
-		}
-        ]
+  "struct_type": "materials",
+  "packages": [
+    {
+      "name": "acl",
+      "format": "rpm",
+      "version": "2.2.51-12.el7",
+      "arch": "x86_64",
+      "source": [
+        {
+        "format": "rpm",
+        "name": "acl-2.2.51-12.el7.src.rpm",
+        "digest": "sha256:aaabbbcccddeeefff111222333...",
+        "url": "https://my.content.store.com/..."
+        }
+      ]
+    },
+    {
+      //...
+    }
+  ]
 }
+```
+
+### Step Data
+
+```json
+{
+  "struct_type": "step",
+  "uuid": "49c4ea15-4696-4635-979a-36ff82a22013",
+  "time": "2019-04-03 15:09:56-04:00",
+  "operation": "FROM",
+  "action": "docker.io/debian:latest@sha256:9a1b6b1073bf12428a55c54e6e3bb001946afbcf49b7fea6a02d345790356998"
+}
+```
+
+### Host Data
+
+```json
+{
+  "struct_type": "host",
+  "name": "",
+  "pretty_name": "",
+  "id": "",
+  "version": "",
+  "version_id": "",
+  "home_url": "",
+  "support_url": "",
+  "bug_report_url": ""
+}
+
 ```
 
 ## plugins
@@ -58,6 +90,7 @@ The executable need:
 - on error or failure, write to stderr and exit non-zero
 
 The JSON output must set a top level field of `struct_type`, so the document is aggregated correctly.
+The logic will do a first pass on this `struct_type` field to detect type, then a second pass to marshal specific type (given type or versioning) and where to group it.
 
 ## Each Step of the Build
 
