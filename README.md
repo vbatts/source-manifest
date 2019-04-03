@@ -75,11 +75,11 @@ The bill-of-materials document will look generally like:
   "version_id": "29",
   "home_url": "https://fedoraproject.org/",
   "support_url": "https://fedoraproject.org/wiki/Communicating_and_getting_help",
-  "bug_report_url": "https://bugzilla.redhat.com/"
-  "annotations": [
+  "bug_report_url": "https://bugzilla.redhat.com/",
+  "annotations": {
     "cpe_name": "cpe:/o:fedoraproject:fedora:29",
     "privacy_policy_url": "https://fedoraproject.org/wiki/Legal:PrivacyPolicy"
-  ]
+  }
 }
 
 ```
