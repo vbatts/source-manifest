@@ -10,12 +10,9 @@ The "simple" consideration to generate and collect information is:
 - ideally should run self-sufficient within the container, only writing the document to stdout
 - may support running outside the container with a target root filesystem path
 
-The base `srcinfo` will run a set of enabled utilities, handing up the package
-and corresponding source information.
+The base `srcinfo` will run a set of enabled utilities, handing up the package and corresponding source information.
 
-The utilities can be tailored per distro or package interface, writing the
-package to stream, that the parent tool (`srcinfo`) will aggregate into a
-package set.
+The utilities can be tailored per distro or package interface, writing the package to stream, that the parent tool (`srcinfo`) will aggregate into a package set.
 
 ## Additional Metadata
 
@@ -54,9 +51,7 @@ The bill-of-materials document will look generally like:
 ## Each Step of the Build
 
 Information per step, to arrive at your current state.
-In the case of a Dockerfile, or further a [multi-stage
-Dockerfile](https://blog.alexellis.io/mutli-stage-docker-builds/), this
-information SHOULD be collect at each step of the build process.
+In the case of a Dockerfile, or further a [multi-stage Dockerfile](https://blog.alexellis.io/mutli-stage-docker-builds/), this information SHOULD be collect at each step of the build process.
 For example:
 
 ```Dockerfile
@@ -84,4 +79,5 @@ The executable need:
 - expect a single argument of the target filesystem path (i.e. `/`)
 - on error or failure, write to stderr and exit non-zero
 
-The JSON output
+The JSON output must set a top level field of `struct_type`, so the document is aggregated correctly.
+
