@@ -68,14 +68,18 @@ The bill-of-materials document will look generally like:
 ```json
 {
   "struct_type": "host",
-  "name": "",
-  "pretty_name": "",
-  "id": "",
-  "version": "",
-  "version_id": "",
-  "home_url": "",
-  "support_url": "",
-  "bug_report_url": ""
+  "name": "Fedora",
+  "pretty_name": "Fedora 29 (Server Edition)",
+  "id": "fedora",
+  "version": "29 (Server Edition)",
+  "version_id": "29",
+  "home_url": "https://fedoraproject.org/",
+  "support_url": "https://fedoraproject.org/wiki/Communicating_and_getting_help",
+  "bug_report_url": "https://bugzilla.redhat.com/"
+  "annotations": [
+    "cpe_name": "cpe:/o:fedoraproject:fedora:29",
+    "privacy_policy_url": "https://fedoraproject.org/wiki/Legal:PrivacyPolicy"
+  ]
 }
 
 ```
