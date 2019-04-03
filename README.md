@@ -26,7 +26,7 @@ The bill-of-materials document will look generally like:
 
 ```json
 {
-        "bomversion": "0.1",
+        "struct_type": "materials",
         "packages": [
                 {
                         "name": "acl",
@@ -47,6 +47,17 @@ The bill-of-materials document will look generally like:
         ]
 }
 ```
+
+## plugins
+
+There ought to be a directory, like `/usr/libexec/srcinfo/collectors/` that all files present that are executable are executed in name sorted order.
+
+The executable need:
+- only output JSON to stdout
+- expect a single argument of the target filesystem path (i.e. `/`)
+- on error or failure, write to stderr and exit non-zero
+
+The JSON output must set a top level field of `struct_type`, so the document is aggregated correctly.
 
 ## Each Step of the Build
 
@@ -69,15 +80,4 @@ ENTRYPOINT ["/bin/sh", "/usr/local/bin/run.sh"]
 
 Every Dockerfile "command" SHOULD generate this information, but at least
 `FROM`, `RUN`, `COPY`, and `ADD`.
-
-## plugins
-
-There ought to be a directory, like `/usr/libexec/srcinfo/collectors/` that all files present that are executable are executed in name sorted order.
-
-The executable need:
-- only output JSON to stdout
-- expect a single argument of the target filesystem path (i.e. `/`)
-- on error or failure, write to stderr and exit non-zero
-
-The JSON output must set a top level field of `struct_type`, so the document is aggregated correctly.
 

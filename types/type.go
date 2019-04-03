@@ -2,7 +2,7 @@ package types
 
 // AnnotationBase is the base struct to include for the annotations field
 type AnnotationBase struct {
-	Annotations map[string]string `json:"annotations"`
+	Annotations map[string]string `json:"annotations,omitempty"`
 }
 
 // StructTypeBase is the base struct to include for a field to have a struct inform of its type.

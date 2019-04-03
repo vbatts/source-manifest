@@ -23,6 +23,7 @@ func TestStructHost(t *testing.T) {
 }
 func TestStructMaterials(t *testing.T) {
 	m := types.Materials{}
+	m.Packages = append(m.Packages, types.Package{})
 	spew.Dump(m)
 
 	buf, err := json.MarshalIndent(m, "", "  ")
