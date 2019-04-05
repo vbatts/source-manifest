@@ -2,6 +2,9 @@
 
 Data structure and utility for exporting software provenance data.
 
+**This is a discussion of approach. The README and structs in `./types/`**
+(the `./cmd/srcinfo` is barely a stub)
+
 ## Architecture
 
 The "simple" consideration to generate and collect information is:
